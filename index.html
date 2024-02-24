@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Comp Sound HW3</title>
+    </head>
+
+    <body>
+        <h1>R2D2 Voice Emulator</h1>
+        <h3>Directions:</h3>
+        <p>To play sound, click on the "play" button. Move the slider left and right to emulate R2D2 talking!</p>
+        <button id="play">Play</button>
+        <input type="range" min=1 max=4000 value=1000 oninput="updateFreq(this.value)"></input><br>
+        <img src="./r2d2.png"></img>
+        <br>
+        <br>
+        <br>
+        <h2>HW3 Write Up for R2D2</h2>
+        <h3>Audio Signal Flow Chart</h3>
+        <img src="./flowchart.png"></img>
+        <h3> Development Process</h3>
+        <p>The process of building the R2D2 sound started smoothly and ended up being quite cumbersome. The Farnell manual hinted at using FM synthesis to get that machine like sound. When I listened to R2D2 sound recordings, I noticed how "thick" the frequencies sounded. The main sound that could be heard was pungent but not thin, which indicated a band of frequencies was being used. Therefore, I used FM synthesis to get the overall robotic sound of R2D2. I also tested a few modifying index values out and found that too small of a value resulted in not enough dissonance while too large of a value resulted in fuzziness. </p>
+
+<p>I also needed a sense of sharpness, especially when the main frequency of the noise went higher. The manual also indicated the usage of randomness. In order to simulate this randomness, I decided to add white noise with a lowpass filter. This lowpass filter added more sharpness to the overall sound, resulting in that characteristic high pitched "machine-like" noises. A higher Q value resulted in a sharper cutoff, and therefore a sharper sound. </p>
+
+<p>Each of these sounds was given their respective gains to balance out the loudness and were  then combined using a global gain. Both frequency values (FM modulation frequency and Lowpass Filter cutoff frequency) was connected to the same slider, allowing the user to manipulate the sound. In the end, the FM created the dissonant band of frequencies and the lowpass filter added sharpness to the overall sound, resulting in a machine-like sound. </p>
+    </body>
+    <script src="./main.js"></script>
+</html>
